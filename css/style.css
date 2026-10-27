@@ -226,3 +226,19 @@ img { max-width: 100%; display: block; }
   .proyecto { grid-template-columns: 1fr; }
   .proyecto__fecha { order: -1; margin-bottom: 0.5rem; }   /* la fecha pasa arriba */
 }
+/* ---------- 9. EFECTO AL PASAR EL RATÓN POR LAS IMÁGENES ---------- */
+.proyecto > div > a:first-child {
+  display: block;
+  overflow: hidden;            /* evita que el desenfoque se salga del borde */
+}
+
+.proyecto .placeholder,
+.proyecto img {
+  transition: opacity 0.4s ease, filter 0.4s ease;   /* duración del efecto */
+}
+
+.proyecto a:hover .placeholder,
+.proyecto a:hover img {
+  opacity: 0.6;                /* opacidad: 1 = normal, 0 = invisible */
+  filter: blur(4px);           /* desenfoque: 0px = nítido, más px = más borroso */
+}

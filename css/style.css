@@ -1,0 +1,228 @@
+/* =========================================================
+   PORTFOLIO ISABEL PEÑA — hoja de estilos principal
+   Cambia los valores de :root para modificar colores y
+   tipografías en toda la web a la vez.
+   ========================================================= */
+
+/* ---------- 1. VARIABLES (tus "ajustes globales") ---------- */
+:root {
+  --color-texto: #1a1a1a;
+  --color-fondo: #ffffff;
+  --color-enlace: rgba(0, 8, 255, 0.85);   /* el azul de tus links en Cargo */
+  --color-linea: #8a8a8a;                   /* líneas separadoras */
+  --color-placeholder: #ececec;             /* cajas grises donde irán las imágenes */
+
+  /* Títulos y etiquetas: Space Grotesk es la más parecida a la de tu template.
+     Cuando quieras otra, cámbiala aquí y en el <link> de Google Fonts del HTML. */
+  --fuente-titulos: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --fuente-texto: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --margen-lateral: clamp(1.25rem, 2.5vw, 3rem);
+}
+
+/* ---------- 2. BASE ---------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }   /* scroll suave al pulsar el menú de categorías */
+
+body {
+  margin: 0;
+  padding: 0 var(--margen-lateral) 6rem;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-texto);
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--color-enlace); outline-offset: 3px; }
+
+img { max-width: 100%; display: block; }
+
+/* ---------- 3. CABECERA ---------- */
+.cabecera {
+  text-align: center;
+  padding-top: 5rem;
+}
+
+.cabecera h1 {
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  margin: 0 0 1.5rem;
+}
+
+.subtitulo {
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+/* Links ABOUT ME / EMAIL / INSTAGRAM */
+.links-contacto {
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem 0 0;
+  text-align: left;
+}
+
+.links-contacto a {
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  color: var(--color-enlace);
+  line-height: 1.3;
+}
+
+/* ---------- 4. MENÚ DE CATEGORÍAS ---------- */
+.menu-categorias {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 2rem 0 6rem;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.menu-categorias a {
+  font-family: var(--fuente-titulos);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.menu-categorias a:hover { color: var(--color-enlace); }
+
+/* ---------- 5. SECCIONES (Graphic design, Material...) ---------- */
+.seccion {
+  padding-top: 4rem;
+  scroll-margin-top: 1rem;
+}
+
+.seccion + .seccion { border-top: 1px solid var(--color-linea); }
+
+.seccion h2 {
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  text-align: center;
+  margin: 0 0 2.5rem;
+}
+
+/* Rejilla de proyectos. Por defecto 3 columnas (como Graphic Design). */
+.proyectos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem 2rem;
+  padding-bottom: 5rem;
+}
+
+/* Variante de 2 columnas más estrecha y centrada (Material, Product) */
+.proyectos--dos {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Variante de 1 proyecto centrado (Ceramics) */
+.proyectos--uno {
+  grid-template-columns: 1fr;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+/* ---------- 6. TARJETA DE PROYECTO ---------- */
+/* Cada proyecto: imagen + texto a la izquierda, fecha a la derecha */
+.proyecto {
+  display: grid;
+  grid-template-columns: minmax(0, 290px) auto;
+  column-gap: 1.25rem;
+  align-items: start;
+}
+
+.proyecto__fecha {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.proyecto__titulo {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  margin: 1.5rem 0 0.2rem;
+}
+
+.proyecto__titulo a { text-decoration: none; }
+.proyecto__titulo a:hover { text-decoration: underline; }
+
+.proyecto p { margin: 0; }
+.proyecto .destacado { margin-top: 1.25rem; }
+.proyecto .destacado a { color: var(--color-enlace); }
+
+/* Caja gris temporal donde irá cada imagen.
+   Cuando tengas la foto, sustituye el <div class="placeholder"> por un <img>. */
+.placeholder {
+  background: var(--color-placeholder);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fuente-titulos);
+  font-size: 0.75rem;
+  color: #888;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Proporciones de imagen (ancho / alto) */
+.ratio-horizontal { aspect-ratio: 3 / 2; }
+.ratio-cuadrada   { aspect-ratio: 1 / 1; }
+
+/* ---------- 7. PÁGINA DE PROYECTO ---------- */
+.volver {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  color: var(--color-enlace);
+}
+
+.pagina-proyecto {
+  max-width: 1000px;
+  margin: 4rem auto 0;
+}
+
+.pagina-proyecto h1 {
+  font-family: var(--fuente-titulos);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 0.5rem;
+}
+
+.pagina-proyecto .intro {
+  max-width: 60ch;
+  margin: 1.5rem 0 3rem;
+  line-height: 1.4;
+}
+
+.galeria {
+  display: grid;
+  gap: 1rem;
+}
+
+/* ---------- 8. MÓVIL ---------- */
+@media (max-width: 900px) {
+  .proyectos,
+  .proyectos--dos { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+}
+
+@media (max-width: 600px) {
+  .menu-categorias { grid-template-columns: repeat(2, 1fr); row-gap: 1rem; margin-bottom: 3rem; }
+  .proyecto { grid-template-columns: 1fr; }
+  .proyecto__fecha { order: -1; margin-bottom: 0.5rem; }   /* la fecha pasa arriba */
+}
